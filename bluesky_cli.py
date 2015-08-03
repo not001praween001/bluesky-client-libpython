@@ -34,25 +34,25 @@ class blueskyconn:
         opts = [deviceIP, "spi", adcmodule, mosi, miso, clk, ce]
         sensorDat = sensornetwork(self, opts)
         try:
-                datJson = json.loads(sensorDat)
-                etLogKey = datJson.keys()[0]
+            datJson = json.loads(sensorDat)
+            etLogKey = datJson.keys()[0]
             
-                logObj = datJson[etLogKey]
-                logKey = logObj.keys()[0]
-                
-                logContentObj = logObj[logKey]
-                logContentKey = logContentObj.keys()[0]
+            logObj = datJson[etLogKey]
+            logKey = logObj.keys()[0]
             
-                for i in xrange(len(logContentObj)):
-                    key = logContentObj.keys()[i]
-                    if key == "spi":
-                        spiDat = logContentObj[key]
-                        break
+            logContentObj = logObj[logKey]
+            logContentKey = logContentObj.keys()[0]
+            
+            for i in xrange(len(logContentObj)):
+                key = logContentObj.keys()[i]
+                if key == "spi":
+                    spiDat = logContentObj[key]
+                    break
         except Exception, e:
             return None
-
+        
         return spiDat
-
+    
     def getSensorDatByAdcChannel(self, deviceIP, adcmodule, ch):
         mosi = "10"
         miso = "9"
@@ -61,27 +61,27 @@ class blueskyconn:
         opts = [deviceIP, "spi", adcmodule, mosi, miso, clk, ce, ch]
         sensorDat = sensornetwork(self, opts)
         try:
-                datJson = json.loads(sensorDat)
-                etLogKey = datJson.keys()[0]
-                
-                logObj = datJson[etLogKey]
-                logKey = logObj.keys()[0]
-                
-                logContentObj = logObj[logKey]
-                logContentKey = logContentObj.keys()[0]
-        
-                
-                for i in xrange(len(logContentObj)):
-                    key = logContentObj.keys()[i]
-                    if key == "spi":
-                        spiDat = logContentObj[key]
-                        break
-            except Exception, e:
+            datJson = json.loads(sensorDat)
+            etLogKey = datJson.keys()[0]
+            
+            logObj = datJson[etLogKey]
+            logKey = logObj.keys()[0]
+            
+            logContentObj = logObj[logKey]
+            logContentKey = logContentObj.keys()[0]
+            
+            
+            for i in xrange(len(logContentObj)):
+                key = logContentObj.keys()[i]
+                if key == "spi":
+                    spiDat = logContentObj[key]
+                    break
+        except Exception, e:
             return None
-
+        
         return spiDat
-
-      
+    
+    
     # Return the list of connecting embedded devices information. 
     def list_ed(self):
         params = createBlueskyParam(self, "ls", ["noneFix", "edconnected"])
@@ -92,7 +92,7 @@ class blueskyconn:
         connStatusInfoListObj = listingDevices[etLogKey[0]]
         connStatusInfoKey = connStatusInfoListObj.keys()[0]
         return connStatusInfoListObj[connStatusInfoKey]
-        
+    
     # Convert to parameter of HTTP
     def createBlueskyParam(self, instruction, opts):
         if type(opts).__name__ == 'list':
@@ -122,6 +122,7 @@ class blueskyconn:
     def login(self):
         for num in range(2):
             url = 'http://' + self.blueskyGateway + '/doLogin.ins'
+
         values = {'username' : self.username,
                   'password' : self.password,
                   'mode' : 'signin'}
@@ -136,6 +137,7 @@ class blueskyconn:
     def logout(self):
         for num in range(2):
             url = 'http://' + self.blueskyGateway + '/doLogout.ins'
+
         values = {'username' : self.username,
                   'mode' : 'signout'}
 
