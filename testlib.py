@@ -1,6 +1,7 @@
 import bluesky_cli
 
-conn = bluesky_cli.blueskyconn("172.16.4.147:8189", "guest", "guest")
+BlueskyGateway = "127.0.0.1:8189"
+conn = bluesky_cli.blueskyconn(BlueskyGateway, "guest", "guest")
 deviceList = conn.list_ed()
 for device in deviceList:
     deviceIP = "0.0.0.0"
