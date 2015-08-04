@@ -32,8 +32,9 @@ class blueskyconn:
         ce = "8"
         spiDat = None
         opts = [deviceIP, "spi", adcmodule, mosi, miso, clk, ce]
-        sensorDat = sensornetwork(self, opts)
+        sensorDat = None
         try:
+	    sensorDat = sensornetwork(self, opts)
             datJson = json.loads(sensorDat)
             etLogKey = datJson.keys()[0]
             
@@ -58,9 +59,11 @@ class blueskyconn:
         miso = "9"
         clk = "11"
         ce = "8"
+        spiDat = None
         opts = [deviceIP, "spi", adcmodule, mosi, miso, clk, ce, ch]
-        sensorDat = sensornetwork(self, opts)
+        sensorDat = None
         try:
+	    sensorDat = sensornetwork(self, opts)
             datJson = json.loads(sensorDat)
             etLogKey = datJson.keys()[0]
             
