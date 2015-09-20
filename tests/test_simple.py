@@ -1,6 +1,6 @@
 import unittest
 
-import bluesky-cli
+import bluesky_libpython
 
 
 class TestSimple(unittest.TestCase):

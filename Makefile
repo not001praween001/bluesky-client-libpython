@@ -4,6 +4,9 @@ all:
 build:
 	python setup.py build
 
+develop:
+	python setup.py develop
+
 sdist:
 	python setup.py sdist
 

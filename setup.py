@@ -20,7 +20,7 @@ from os import path
 
 here = path.abspath(path.dirname(__file__))
 
-PGKNAME = 'bluesky_cli'
+PGKNAME = 'bluesky_libpython'
 
 # Get the long description from the relevant file
 with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
@@ -65,11 +65,7 @@ setup(
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers = [
-        # How mature is this project? Common values are
-        #   3 - Alpha
-        #   4 - Beta
-        #   5 - Production/Stable
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 1 - Planning',
 
         # Indicate who your project is intended for
         'Intended Audience :: Developers',
